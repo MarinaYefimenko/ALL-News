@@ -1,0 +1,34 @@
+section.all{
+    margin: 5rem 0 3rem 0;
+    
+    .textCard{
+        padding: 1rem;
+    }
+
+    .moreText{
+        font-size: 1.1rem;
+        font-weight: 500;
+    
+        a {
+            color: rgb(90, 90, 90);
+            text-decoration: none;
+    
+            &:hover{
+                color: rgb(45, 45, 45);
+            }
+        }
+        img{
+            padding: 0 1rem;
+        }
+    }
+}
+
+.wrapper{
+    margin: 0;
+    padding: 0;
+}
+
+.newsCard{
+    margin-bottom: 2rem;
+}
+

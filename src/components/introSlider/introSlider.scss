@@ -1,7 +1,19 @@
 .slide {
-    height: 85vh;
+    height: 90vh;
 
     img{
         max-height: 100%;
     }
+
+    .newsLink{
+        color: #fff;
+        text-decoration: none;
+    }
+}
+
+.carousel-caption {
+    text-align: left;
+    bottom: 4rem;
+    background: rgba(0, 0, 0, 0.2);
+    padding: 20px 10px;
 }

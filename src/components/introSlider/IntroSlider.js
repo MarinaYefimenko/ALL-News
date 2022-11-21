@@ -68,7 +68,7 @@ const View = ({itemsNew}) => {
                 alt="news preview"
             />
             <Carousel.Caption>
-                <h3><a href={item.link}>{item.title}</a></h3>
+                <h3><a href={item.link} className="newsLink">{item.title}</a></h3>
             </Carousel.Caption>
         </Carousel.Item>
         )
