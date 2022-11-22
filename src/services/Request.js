@@ -15,7 +15,12 @@ class Request {
     }
 
     getMainNewsBE = async () => {
-        let res = await this.getResource(`${this._apiBase}?country=be&pageSize=5&${this._apiKey}`);
+        let res = await this.getResource(`${this._apiBase}?country=ua&pageSize=17&${this._apiKey}`);
+        return await (res.articles.map(this._transformNews));
+    }
+
+    getCategoryNews = async (cat) => {
+        let res = await this.getResource(`${this._apiBase}?country=ua&category=${cat}&pageSize=100&${this._apiKey}`);
         return await (res.articles.map(this._transformNews));
     }
 
@@ -23,10 +28,12 @@ class Request {
         return({
             title: newItem.title,
             img: newItem.urlToImage,
-            link: newItem.url
+            link: newItem.url,
+            time: `${newItem.publishedAt.slice(0, 10).split('-').reverse().join('.')}  ${newItem.publishedAt.slice(11, 16)}` 
             }
         )
     }
 }
+
 
 export default Request;

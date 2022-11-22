@@ -56,7 +56,7 @@ const InroSlider  = () => {
 
 const View = ({itemsNew}) => {
 
-    const slides = itemsNew.map((item, i) => {
+    const slides = itemsNew.slice(0, 5).map((item, i) => {
         if(item.img === null) {
             item.img = './bg.jpg';
         }
@@ -65,7 +65,7 @@ const View = ({itemsNew}) => {
             <img
                 className="d-block w-100"
                 src={item.img}
-                alt="news preview"
+                alt={item.title}
             />
             <Carousel.Caption>
                 <h3><a href={item.link} className="newsLink">{item.title}</a></h3>

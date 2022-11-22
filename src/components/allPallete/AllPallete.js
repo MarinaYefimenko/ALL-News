@@ -3,60 +3,105 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import ListGroup from 'react-bootstrap/ListGroup';
+import CardGroup from 'react-bootstrap/CardGroup';
+import Request from '../../services/Request';
+import { useState, useEffect } from 'react';
 
 import './allPallete.scss';
 
 const AllPallete = () => {
+    
+    const[itemsNew, setItemsNew] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
+    const request = new Request();
+
+    const updateItemsNew = () => {
+        onNewsLoading();
+        request
+            .getMainNewsBE()
+            .then(onNewsLoaded)
+            .catch(onError);
+    }
+    const onNewsLoaded = (itemsNew) => {
+        setLoading(false);
+        setItemsNew(itemsNew);
+    }
+
+    const onNewsLoading = () => {
+        setLoading(true);
+    }
+
+    const onError = () => {
+        setError(true);
+        setLoading(false);
+    }
+
+    useEffect(() => {
+        updateItemsNew();
+        // eslint-disable-next-line
+    }, []);
+
+    const errorMessage = error ? <div>Error</div> : null;
+    const spinner = loading ? <div>Spinner</div> : null;
+    const content = !(loading || error || !itemsNew) ? <View itemsNew={itemsNew}/> : null;
+
+    return(
+        <>
+            {errorMessage}
+            {spinner}
+            {content}
+        </>
+    )
+
+
+    
+}
+
+const View = ({itemsNew}) => {
+
+    const cards = itemsNew.slice(5, 11).map((item, i) => {
+        if(item.img === null) {
+            item.img = './bg.jpg';
+        }
+        return (
+            <Col key={i}>
+                <Card className='newsImgCard'>
+                    <Card.Img className="cardImg" variant="top" src={item.img} alt={item.title}/>
+                    <Card.Body>
+                    <Card.Subtitle className="mb-2 text-muted">{item.time}</Card.Subtitle>
+                    <Card.Text>
+                        <a href={item.link} className="newsLink">{item.title}</a>
+                    </Card.Text>
+                    </Card.Body>
+                </Card>
+            </Col>
+        )
+    })
+
+    const textNews = itemsNew.slice(11, 15).map((item, i) => {
+        return (
+            <ListGroup.Item className="wrapper" key={i+6}>
+                <Card bg="dark" text="white">
+                    <Card.Body className='textCard'>
+                        <Card.Subtitle className="mb-2 text-muted">{item.time}</Card.Subtitle>
+                            <Card.Text>
+                                <a href={item.link} className="newsLink">{item.title}</a>
+                            </Card.Text>
+                    </Card.Body>
+                </Card>
+            </ListGroup.Item>
+        )
+    })
+
     return(
         <section className='all'>
              <Container>
                 <Row>
                     <Col sm={3}>
                         <ListGroup>
-                            <ListGroup.Item className="wrapper">
-                                <Card bg="light">
-                                    <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">20-11-2022 19:30</Card.Subtitle>
-                                            <Card.Text>
-                                                This is a wider card with supporting text below as a natural lead-in
-                                                to additional content. This content is a little bit longer.
-                                            </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </ListGroup.Item>
-                            <ListGroup.Item className="wrapper">
-                                <Card bg="light">
-                                    <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">20-11-2022 19:30</Card.Subtitle>
-                                            <Card.Text>
-                                                This is a wider card with supporting text below as a natural lead-in
-                                                to additional content. This content is a little bit longer.
-                                            </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </ListGroup.Item>
-                            <ListGroup.Item className="wrapper">
-                                <Card bg="light">
-                                    <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">20-11-2022 19:30</Card.Subtitle>
-                                            <Card.Text>
-                                                This is a wider card with supporting text below as a natural lead-in
-                                                to additional content. This content is a little bit longer.
-                                            </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </ListGroup.Item>
-                            <ListGroup.Item className="wrapper">
-                                <Card bg="light">
-                                    <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">20-11-2022 19:30</Card.Subtitle>
-                                            <Card.Text>
-                                                This is a wider card with supporting text below as a natural lead-in
-                                                to additional content. This content is a little bit longer.
-                                            </Card.Text>
-                                    </Card.Body>
-                                </Card>
-                            </ListGroup.Item>
+                            {textNews}
                             <ListGroup.Item className="wrapper">
                                 <div className='textCard'>
                                     <Card.Body>
@@ -72,22 +117,11 @@ const AllPallete = () => {
                         </ListGroup>
                     </Col>
                     <Col sm={9}>
-                        <Row xs={1} md={3} className="g-6">
-                            {Array.from({ length: 6 }).map((_, idx) => (
-                                <Col>
-                                    <Card className='newsCard'>
-                                        <Card.Img variant="top" src='./bg.jpg' />
-                                        <Card.Body>
-                                        <Card.Subtitle className="mb-2 text-muted">20-11-2022 19:30</Card.Subtitle>
-                                        <Card.Text>
-                                            This is a wider card with supporting text below as a natural lead-in
-                                            to additional content. This content is a little bit longer.
-                                        </Card.Text>
-                                        </Card.Body>
-                                    </Card>
-                                </Col>
-                            ))}
+                        <CardGroup>
+                        <Row xs={1} sm={2} md={3} className="cardRow g-6">
+                            {cards}
                         </Row>
+                        </CardGroup>
                     </Col>
                 </Row>
             </Container>

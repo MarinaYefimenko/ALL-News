@@ -8,7 +8,7 @@ import './header.scss';
 
 const Header = () => {
     return (
-    <Navbar expand="lg">
+    <Navbar expand="lg" bg="white">
       <Container>
         <Navbar.Brand className="logo" href="#home">ALLNews</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
