@@ -1,4 +1,7 @@
 import Carousel from 'react-bootstrap/Carousel';
+
+import Spinner from '../spinner/Spinner';
+import ErrorGif from '../errorGif/ErrorGif';
 import Request from '../../services/Request';
 import { useState, useEffect } from 'react';
 
@@ -38,8 +41,8 @@ const InroSlider  = () => {
         // eslint-disable-next-line
     }, []);
 
-    const errorMessage = error ? <div>Error</div> : null;
-    const spinner = loading ? <div>Spinner</div> : null;
+    const errorMessage = error ? <ErrorGif/> : null;
+    const spinner = loading ? <Spinner/> : null;
     const content = !(loading || error || !itemsNew) ? <View itemsNew={itemsNew}/> : null;
 
 
@@ -68,7 +71,7 @@ const View = ({itemsNew}) => {
                 alt={item.title}
             />
             <Carousel.Caption>
-                <h3><a href={item.link} className="newsLink">{item.title}</a></h3>
+                <span><a href={item.link} className="newsLink">{item.title}</a></span>
             </Carousel.Caption>
         </Carousel.Item>
         )

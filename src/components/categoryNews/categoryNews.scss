@@ -23,76 +23,16 @@ section.category{
                     font-weight: 500;
                 }
             }
-        }
-        
-        
-        .categoryCardsWrapper{
-            .topCategoryCard{
-                margin-bottom: 1.5rem;
-                img{
-                    height: 20rem;
-                }
-            }
 
-            .newsCardSmall{
-                height: 20rem;
-
-            .card-body {
-                height: 10rem;
-            }
-        
-            img{
-                height: 10rem;
-                object-fit: cover;
-            }
-            }
-
-
-            .text-muted{
-                font-size: 0.8rem;
-            }
-            
-            a {
-                text-decoration: none;
-                color: inherit;
-                &:hover{
-                    color: rgb(90, 90, 90);
-                }
+            .height{
+                height: 27rem;
+                @media(max-width: 992px) {
+                    height: 0;
+                  }
             }
         }
-
-        .list-group {
-            height: 100%;
-            justify-content: space-between;
-
-            .text-muted{
-                font-size: 0.8rem;
-            }
-            
-            a {
-                text-decoration: none;
-                color: inherit;
-                &:hover{
-                    color: rgb(90, 90, 90);
-                }
-            }
-    
-        .moreText{
-            font-size: 1.1rem;
-            font-weight: 500;
-    
-            a {
-                color: rgb(90, 90, 90);
-                text-decoration: none;
-    
-                &:hover{
-                    color: rgb(45, 45, 45);
-                }
-            }
-            img{
-                padding: 0 1rem;
-            }
-        }
-        }
+    }
+    @media (max-width: 768px) {
+        padding: 3rem 0;
     }
 }

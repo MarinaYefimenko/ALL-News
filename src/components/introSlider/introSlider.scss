@@ -1,13 +1,32 @@
 .slide {
-    height: 90vh;
+    height: 48rem;
 
     img{
-        max-height: 100%;
+        height: 100%;
     }
 
     .newsLink{
         color: #fff;
         text-decoration: none;
+        font-size: 1.4rem;
+
+        @media (max-width: 768px) {   
+            font-size: 1.1rem;
+            line-height: 1;
+        }
+    }
+
+    @media (max-width: 1200px) {
+        height: 38rem;
+    }
+    @media (max-width: 992px) {
+        height: 30rem;
+    }
+    @media (max-width: 768px) {
+        height: 22rem;
+    }
+    @media (max-width: 576px) {
+        height: 18rem;
     }
 }
 

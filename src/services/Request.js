@@ -15,7 +15,7 @@ class Request {
     }
 
     getMainNewsBE = async () => {
-        let res = await this.getResource(`${this._apiBase}?country=ua&pageSize=17&${this._apiKey}`);
+        let res = await this.getResource(`${this._apiBase}?country=ua&pageSize=15&${this._apiKey}`);
         return await (res.articles.map(this._transformNews));
     }
 
@@ -26,7 +26,7 @@ class Request {
 
     _transformNews = (newItem) => {
         return({
-            title: newItem.title,
+            title: newItem.title.length <= 92 ? newItem.title : `${newItem.title.slice(0, 92)}...`,
             img: newItem.urlToImage,
             link: newItem.url,
             time: `${newItem.publishedAt.slice(0, 10).split('-').reverse().join('.')}  ${newItem.publishedAt.slice(11, 16)}` 

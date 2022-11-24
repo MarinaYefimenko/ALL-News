@@ -4,6 +4,9 @@ import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
 import ListGroup from 'react-bootstrap/ListGroup';
 import CardGroup from 'react-bootstrap/CardGroup';
+
+import Spinner from '../spinner/Spinner';
+import ErrorGif from '../errorGif/ErrorGif';
 import Request from '../../services/Request';
 import { useState, useEffect } from 'react';
 
@@ -43,8 +46,8 @@ const AllPallete = () => {
         // eslint-disable-next-line
     }, []);
 
-    const errorMessage = error ? <div>Error</div> : null;
-    const spinner = loading ? <div>Spinner</div> : null;
+    const errorMessage = error ? <ErrorGif/> : null;
+    const spinner = loading ? <Spinner/> : null;
     const content = !(loading || error || !itemsNew) ? <View itemsNew={itemsNew}/> : null;
 
     return(
@@ -99,7 +102,7 @@ const View = ({itemsNew}) => {
         <section className='all'>
              <Container>
                 <Row>
-                    <Col sm={3}>
+                    <Col lg={3}>
                         <ListGroup>
                             {textNews}
                             <ListGroup.Item className="wrapper">
@@ -116,7 +119,7 @@ const View = ({itemsNew}) => {
                             </ListGroup.Item>
                         </ListGroup>
                     </Col>
-                    <Col sm={9}>
+                    <Col lg={9}>
                         <CardGroup>
                         <Row xs={1} sm={2} md={3} className="cardRow g-6">
                             {cards}
