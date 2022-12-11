@@ -115,7 +115,7 @@ const View = ({itemsNew, props}) => {
                                 <Card.Body>
                                     <Card.Text className='moreText d-flex'>
                                         {itemsNew.length >= 10? (
-                                        <a href="/">
+                                        <a href="/all-news">
                                             See all news     
                                             <img src="https://img.icons8.com/ios/30/null/circled-chevron-right.png" alt=''/>
                                         </a> )

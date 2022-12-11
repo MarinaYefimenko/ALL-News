@@ -109,7 +109,7 @@ const View = ({itemsNew}) => {
                                 <div className='textCard'>
                                     <Card.Body>
                                             <Card.Text className='moreText d-flex'>
-                                                <a href="/">
+                                                <a href="/all-news">
                                                 See more news     
                                                 <img src="https://img.icons8.com/ios/30/null/circled-chevron-right.png" alt=''/>
                                                 </a>

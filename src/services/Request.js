@@ -29,6 +29,7 @@ class Request {
             title: newItem.title.length <= 92 ? newItem.title : `${newItem.title.slice(0, 92)}...`,
             img: newItem.urlToImage,
             link: newItem.url,
+            descr: newItem.description,
             time: `${newItem.publishedAt.slice(0, 10).split('-').reverse().join('.')}  ${newItem.publishedAt.slice(11, 16)}` 
             }
         )

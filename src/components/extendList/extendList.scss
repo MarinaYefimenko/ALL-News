@@ -1,0 +1,22 @@
+.any-news-item{
+    width: 100%;
+    margin: 1rem 0;
+
+    #card-header{
+        display: flex;
+    }
+    #block-title{
+        font-size: 1.5rem;
+        padding-left: 1.3rem;
+        line-height: 1.5;
+        font-weight: 500;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        &:hover{
+            color: rgb(90, 90, 90);
+        }
+    }
+}
