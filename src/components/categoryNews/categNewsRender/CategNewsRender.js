@@ -117,7 +117,7 @@ const View = ({itemsNew, props}) => {
                                         {itemsNew.length >= 10? (
                                         <a href="/all-news">
                                             See all news     
-                                            <img src="https://img.icons8.com/ios/30/null/circled-chevron-right.png" alt=''/>
+                                            <img src="./next-arrow.png" alt=''/>
                                         </a> )
                                         : (
                                             <span>That`s all news in category {props.category} for this moment.</span>    

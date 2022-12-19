@@ -2,6 +2,7 @@ import Container from 'react-bootstrap/Container';
 import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import Row from 'react-bootstrap/Row';
+import Button from 'react-bootstrap/Button';
 
 import Spinner from '../spinner/Spinner';
 import ErrorGif from '../errorGif/ErrorGif';
@@ -81,13 +82,14 @@ const ListView = ({itemsNew}) => {
         )})
     return(
         <Container>
-        <Card className='any-news-item'>
-            <Card.Body id="card-header">
-                <a href="/"><img src="./back-arrow.png"/></a>              
+        <Card id="card-header" className='any-news-item'>
+            <Card.Body id="card-header-inner">
+                <a href="/"><img src="./back-arrow.png" alt="back"/></a>              
                 <div id="block-title">Latest news:</div>
             </Card.Body>
         </Card>
             {cards}
+            <Button id="more-btn" size="lg">MORE NEWS</Button>{' '}
         </Container>
         
         

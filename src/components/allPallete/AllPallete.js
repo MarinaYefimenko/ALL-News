@@ -111,7 +111,7 @@ const View = ({itemsNew}) => {
                                             <Card.Text className='moreText d-flex'>
                                                 <a href="/all-news">
                                                 See more news     
-                                                <img src="https://img.icons8.com/ios/30/null/circled-chevron-right.png" alt=''/>
+                                                <img src="./next-arrow.png" alt=''/>
                                                 </a>
                                             </Card.Text>
                                     </Card.Body>
