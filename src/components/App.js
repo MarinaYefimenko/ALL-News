@@ -17,7 +17,6 @@ const App = () => {
 
     const updateCategory = (category) => {
         setCategoryName(category);
-        console.log(categoryName);
     }
 
     useEffect(() => {
