@@ -10,7 +10,7 @@ import Request from '../../services/Request';
 import { useState, useEffect } from 'react';
 import './extendList.scss';
 
-const ExtendList = () => {
+const ExtendList = (props) => {
     const [itemsNew, setItemsNew] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(false);
@@ -43,9 +43,11 @@ const ExtendList = () => {
         // eslint-disable-next-line
     }, []);
 
+
+
     const errorMessage = error ? <ErrorGif/> : null;
     const spinner = loading ? <Spinner/> : null;
-    const content = !(loading || error || !itemsNew) ? <ListView itemsNew={itemsNew}/> : null;
+    const content = !(loading || error || !itemsNew) ? <ListView itemsNew={itemsNew} categoryName={props.categoryName}/> : null;
 
     return(
         <>
@@ -57,7 +59,9 @@ const ExtendList = () => {
 }
 
 
-const ListView = ({itemsNew}) => {
+const ListView = ({itemsNew, categoryName}) => {
+    console.log(categoryName);
+    const headerTitle = categoryName ? `Latest news in category ${categoryName} :` : 'Latest news:';
     const cards = itemsNew.map((item, i) => {
         if(item.img === null) {
             item.img = './bg.jpg';
@@ -85,7 +89,7 @@ const ListView = ({itemsNew}) => {
         <Card id="card-header" className='any-news-item'>
             <Card.Body id="card-header-inner">
                 <a href="/"><img src="./back-arrow.png" alt="back"/></a>              
-                <div id="block-title">Latest news:</div>
+                <div id="block-title">{headerTitle}</div>
             </Card.Body>
         </Card>
             {cards}

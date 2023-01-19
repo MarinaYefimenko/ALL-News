@@ -120,7 +120,7 @@ const View = ({itemsNew, props}) => {
                                             <img src="./next-arrow.png" alt=''/>
                                         </a> )
                                         : (
-                                            <span>That`s all news in category {props.category} for this moment.</span>    
+                                            <span>That`s all news in category {props.category} for the moment.</span>    
                                         )}
                                     </Card.Text>
                                 </Card.Body>

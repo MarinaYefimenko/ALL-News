@@ -15,12 +15,12 @@ class Request {
     }
 
     getMainNewsBE = async () => {
-        let res = await this.getResource(`${this._apiBase}?country=ua&pageSize=15&${this._apiKey}`);
+        let res = await this.getResource(`${this._apiBase}?country=be&pageSize=15&${this._apiKey}`);
         return await (res.articles.map(this._transformNews));
     }
 
     getCategoryNews = async (cat) => {
-        let res = await this.getResource(`${this._apiBase}?country=ua&category=${cat}&pageSize=100&${this._apiKey}`);
+        let res = await this.getResource(`${this._apiBase}?country=be&category=${cat}&pageSize=100&${this._apiKey}`);
         return await (res.articles.map(this._transformNews));
     }
 

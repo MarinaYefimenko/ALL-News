@@ -6,10 +6,24 @@ import Footer from "./footer/Footer";
 import Spinner from './spinner/Spinner';
 import ErrorGif from "./errorGif/ErrorGif";
 
+import { useState, useEffect } from 'react';
+
 const MainPage = lazy(() => import('./pages/MainPage'));
 const NewsListPage = lazy(() => import('./pages/NewsListPage'));
 
+
 const App = () => {
+    const [categoryName, setCategoryName] = useState(null);
+
+    const updateCategory = (category) => {
+        setCategoryName(category);
+        console.log(categoryName);
+    }
+
+    useEffect(() => {
+        setCategoryName(categoryName);
+    }, [categoryName]);
+
     return (
     <Router>
         <div className="app">
@@ -17,10 +31,8 @@ const App = () => {
             <main>
                 <Suspense fallback={<Spinner/>}>
                     <Routes>
-                        <Route exact path="/" element={<MainPage/>}/>
-                        <Route exact path="/all-news" element={<NewsListPage/>}/>
-                        {/* <Route path="/comics/:id" element={<SinglePage Component={SingleComicLayout} dataType='comic'/>}/>
-                        <Route path="/characters/:id" element={<SinglePage Component={SingleCharacterLayout} dataType='character'/>}/> */}
+                        <Route exact path="/" element={<MainPage updateCategory={updateCategory}/>}/>
+                        <Route exact path="/all-news" element={<NewsListPage categoryName={categoryName}/>}/>
                         <Route path="*" element={<ErrorGif/>}/>
                     </Routes>
                 </Suspense>

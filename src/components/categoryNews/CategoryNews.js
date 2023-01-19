@@ -9,11 +9,12 @@ import { useState } from 'react';
 
 import './categoryNews.scss';
 
-const CategoryNews = () => {
+const CategoryNews = (props) => {
     const [categoryName, setCategoryName] = useState("science");
 
     function changeCategory(name) {
         setCategoryName(name);
+        props.updateCategory(name);
     }
 
     const _categoryNames = ['science', 'general', 'business', 'health', 'sports', 'entertainment', 'technology'];

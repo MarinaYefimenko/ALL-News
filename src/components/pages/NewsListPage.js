@@ -1,8 +1,8 @@
 import ExtendList from '../extendList/ExtendList';
 
-const NewsListPage = () => {
+const NewsListPage = (props) => {
     return (
-        <ExtendList/>
+        <ExtendList categoryName={props.categoryName}/>
     )
 }
 
